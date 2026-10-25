@@ -1,0 +1,743 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ruban — Freelance Website & UI Designer</title>
+    <meta name="description" content="Modern, clean, minimalist website design that turns visitors into high-paying clients. 3 to 5 day fast delivery.">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #07090e;
+            --surface: #0f1420;
+            --surface-card: #151c2d;
+            --border: #1f293d;
+            --primary: #6366f1;
+            --primary-glow: rgba(99, 102, 241, 0.25);
+            --accent: #10b981;
+            --accent-glow: rgba(16, 185, 129, 0.2);
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --text-dark: #cbd5e1;
+            --radius-lg: 20px;
+            --radius-md: 12px;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Plus Jakarta Sans', -apple-system, sans-serif;
+            background: var(--bg);
+            color: var(--text-main);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Ambient background glow */
+        .ambient-glow {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 800px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(99, 102, 241, 0.15) 0%, rgba(7, 9, 14, 0) 70%);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        /* Header */
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            backdrop-filter: blur(16px);
+            background: rgba(7, 9, 14, 0.85);
+            border-bottom: 1px solid rgba(31, 41, 61, 0.6);
+            padding: 16px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--text-main);
+            letter-spacing: -0.5px;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .logo-dot { width: 9px; height: 9px; border-radius: 50%; background: var(--primary); }
+        nav { display: flex; align-items: center; gap: 30px; }
+        nav a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 600;
+            transition: color 0.2s;
+        }
+        nav a:hover { color: var(--text-main); }
+        .header-cta {
+            background: var(--primary);
+            color: #fff;
+            padding: 10px 22px;
+            border-radius: 10px;
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 700;
+            transition: all 0.2s;
+            box-shadow: 0 4px 15px var(--primary-glow);
+        }
+        .header-cta:hover { transform: translateY(-1px); opacity: 0.95; }
+
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Hero */
+        .hero {
+            padding: 100px 0 80px;
+            text-align: center;
+        }
+        .availability-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(16, 185, 129, 0.1);
+            border: 1px solid rgba(16, 185, 129, 0.3);
+            color: #6ee7b7;
+            padding: 6px 16px;
+            border-radius: 30px;
+            font-size: 13px;
+            font-weight: 700;
+            margin-bottom: 24px;
+        }
+        .pulse-dot {
+            width: 8px; height: 8px; border-radius: 50%; background: var(--accent);
+            box-shadow: 0 0 10px var(--accent);
+            animation: pulse 1.8s infinite;
+        }
+        @keyframes pulse { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.5; transform: scale(1.2); } }
+
+        .hero h1 {
+            font-size: 60px;
+            line-height: 1.12;
+            letter-spacing: -1.8px;
+            font-weight: 800;
+            max-width: 900px;
+            margin: 0 auto 24px;
+            background: linear-gradient(180deg, #ffffff 40%, #94a3b8 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .hero p {
+            font-size: 19px;
+            color: var(--text-muted);
+            max-width: 680px;
+            margin: 0 auto 36px;
+            line-height: 1.6;
+        }
+        .hero-actions {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 60px;
+        }
+        .btn-main {
+            background: linear-gradient(135deg, #6366f1, #8b5cf6);
+            color: #fff;
+            padding: 16px 36px;
+            border-radius: 12px;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 700;
+            box-shadow: 0 10px 25px var(--primary-glow);
+            transition: all 0.2s;
+        }
+        .btn-main:hover { transform: translateY(-2px); box-shadow: 0 15px 35px var(--primary-glow); }
+        .btn-secondary {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            color: var(--text-main);
+            padding: 16px 32px;
+            border-radius: 12px;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 700;
+            transition: all 0.2s;
+        }
+        .btn-secondary:hover { background: var(--surface-card); }
+
+        /* Trust Stats */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+            max-width: 840px;
+            margin: 0 auto;
+            padding: 24px 30px;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 18px;
+        }
+        .stat-item h3 { font-size: 32px; font-weight: 800; color: #fff; margin-bottom: 4px; }
+        .stat-item p { font-size: 13px; color: var(--text-muted); font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; }
+
+        /* Section Global */
+        section { padding: 90px 0; }
+        .section-header { text-align: center; margin-bottom: 55px; }
+        .section-tag {
+            color: var(--primary);
+            font-size: 13px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 10px;
+            display: inline-block;
+        }
+        .section-header h2 {
+            font-size: 38px;
+            font-weight: 800;
+            letter-spacing: -1px;
+            margin-bottom: 14px;
+        }
+        .section-header p {
+            font-size: 17px;
+            color: var(--text-muted);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Portfolio / Case Studies */
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 28px;
+        }
+        .work-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            transition: all 0.3s;
+            display: flex;
+            flex-direction: column;
+        }
+        .work-card:hover {
+            transform: translateY(-6px);
+            border-color: rgba(99, 102, 241, 0.4);
+            box-shadow: 0 15px 35px -5px rgba(0,0,0,0.4);
+        }
+        .work-img-wrap {
+            height: 220px;
+            background: linear-gradient(135deg, #1e1b4b, #0f172a);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 24px;
+            position: relative;
+        }
+        .mockup-preview-badge {
+            position: absolute;
+            top: 16px;
+            left: 16px;
+            background: rgba(0,0,0,0.6);
+            border: 1px solid rgba(255,255,255,0.1);
+            color: #fff;
+            padding: 4px 10px;
+            border-radius: 6px;
+            font-size: 11px;
+            font-weight: 700;
+            backdrop-filter: blur(8px);
+        }
+        .mockup-icon { font-size: 48px; }
+        .work-content {
+            padding: 24px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .work-content h3 { font-size: 20px; font-weight: 700; margin-bottom: 8px; color: #fff; }
+        .work-content p { font-size: 14px; color: var(--text-muted); margin-bottom: 20px; line-height: 1.5; }
+        .work-tags { display: flex; gap: 8px; margin-bottom: 20px; flex-wrap: wrap; }
+        .work-tag {
+            background: var(--surface-card);
+            border: 1px solid var(--border);
+            color: #cbd5e1;
+            font-size: 11px;
+            font-weight: 600;
+            padding: 4px 10px;
+            border-radius: 6px;
+        }
+        .btn-view-work {
+            background: rgba(99, 102, 241, 0.1);
+            border: 1px solid rgba(99, 102, 241, 0.3);
+            color: #a5b4fc;
+            padding: 10px;
+            border-radius: 8px;
+            text-align: center;
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 700;
+            transition: all 0.2s;
+        }
+        .btn-view-work:hover { background: var(--primary); color: #fff; }
+
+        /* Services Grid */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+        .service-box {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+            padding: 34px 28px;
+            transition: all 0.2s;
+        }
+        .service-box:hover { border-color: rgba(99, 102, 241, 0.3); transform: translateY(-3px); }
+        .service-icon {
+            width: 48px;
+            height: 48px;
+            background: rgba(99, 102, 241, 0.12);
+            color: var(--primary);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+        .service-box h3 { font-size: 20px; font-weight: 700; margin-bottom: 12px; color: #fff; }
+        .service-box p { font-size: 14px; color: var(--text-muted); line-height: 1.6; }
+
+        /* Pricing Cards */
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 28px;
+            align-items: center;
+        }
+        .pricing-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+            padding: 38px 30px;
+            position: relative;
+            transition: all 0.2s;
+        }
+        .pricing-card.featured {
+            background: linear-gradient(180deg, #161e31 0%, #0f1420 100%);
+            border: 2px solid var(--primary);
+            transform: scale(1.04);
+            box-shadow: 0 20px 40px rgba(99, 102, 241, 0.15);
+        }
+        .popular-badge {
+            position: absolute;
+            top: -14px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--primary);
+            color: #fff;
+            padding: 5px 16px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .pricing-card h3 { font-size: 22px; font-weight: 800; margin-bottom: 8px; }
+        .pricing-card p { font-size: 14px; color: var(--text-muted); margin-bottom: 24px; min-height: 42px; }
+        .price {
+            font-size: 42px;
+            font-weight: 800;
+            color: #fff;
+            margin-bottom: 24px;
+            display: flex;
+            align-items: baseline;
+            gap: 6px;
+        }
+        .price span { font-size: 15px; color: var(--text-muted); font-weight: 500; }
+        .features-list { list-style: none; margin-bottom: 30px; }
+        .features-list li {
+            font-size: 14px;
+            color: var(--text-dark);
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .features-list li span { color: var(--accent); font-weight: 800; }
+        .btn-pricing {
+            display: block;
+            width: 100%;
+            padding: 14px;
+            text-align: center;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 15px;
+            transition: all 0.2s;
+            background: var(--surface-card);
+            border: 1px solid var(--border);
+            color: #fff;
+        }
+        .btn-pricing.btn-featured {
+            background: var(--primary);
+            border-color: var(--primary);
+            box-shadow: 0 4px 15px var(--primary-glow);
+        }
+        .btn-pricing:hover { opacity: 0.95; transform: translateY(-1px); }
+
+        /* Contact Section */
+        .contact-wrap {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 24px;
+            padding: 60px 50px;
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 50px;
+            align-items: center;
+        }
+        .contact-info h2 { font-size: 36px; font-weight: 800; margin-bottom: 16px; }
+        .contact-info p { font-size: 16px; color: var(--text-muted); margin-bottom: 30px; }
+        .direct-email-box {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            background: var(--surface-card);
+            border: 1px solid var(--border);
+            padding: 14px 20px;
+            border-radius: 12px;
+            margin-bottom: 20px;
+        }
+        .direct-email-box div h4 { font-size: 12px; color: var(--text-muted); text-transform: uppercase; }
+        .direct-email-box div a { color: #6ee7b7; font-weight: 700; text-decoration: none; font-size: 15px; }
+
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+        .form-row-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+        .contact-form input, .contact-form select, .contact-form textarea {
+            background: var(--surface-card);
+            border: 1px solid var(--border);
+            color: #fff;
+            padding: 14px 16px;
+            border-radius: 10px;
+            font-size: 14px;
+            outline: none;
+            font-family: inherit;
+        }
+        .contact-form input:focus, .contact-form textarea:focus { border-color: var(--primary); }
+        .contact-form textarea { height: 120px; resize: none; }
+        .btn-send {
+            background: linear-gradient(135deg, #6366f1, #8b5cf6);
+            color: #fff;
+            padding: 16px;
+            border: none;
+            border-radius: 10px;
+            font-size: 16px;
+            font-weight: 700;
+            cursor: pointer;
+            box-shadow: 0 10px 25px var(--primary-glow);
+            transition: all 0.2s;
+        }
+        .btn-send:hover { opacity: 0.95; transform: translateY(-1px); }
+
+        /* Footer */
+        footer {
+            border-top: 1px solid var(--border);
+            padding: 40px 0;
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 14px;
+        }
+        footer a { color: var(--text-main); text-decoration: none; font-weight: 600; }
+
+        @media (max-width: 900px) {
+            .hero h1 { font-size: 38px; }
+            .portfolio-grid, .services-grid, .pricing-grid, .stats-grid { grid-template-columns: 1fr; }
+            .pricing-card.featured { transform: none; }
+            .contact-wrap { grid-template-columns: 1fr; padding: 30px 20px; }
+            .form-row-2 { grid-template-columns: 1fr; }
+            nav { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Launch Offer Top Banner -->
+    <div style="background: linear-gradient(90deg, #dc2626, #7c3aed, #2563eb); color: #ffffff; padding: 10px 20px; text-align: center; font-size: 13px; font-weight: 700; display: flex; justify-content: center; align-items: center; gap: 10px; position: sticky; top: 0; z-index: 1001; box-shadow: 0 4px 15px rgba(0,0,0,0.3);">
+        <span>🔥 <strong>LIMITED LAUNCH SPECIAL:</strong> Full Modern Homepage Redesign for just <strong>$9</strong> (Normally $299)</span>
+        <span style="background: rgba(255,255,255,0.2); padding: 2px 8px; border-radius: 4px; font-size: 11px;">First 10 Clients Only</span>
+        <a href="#contact" style="background: #ffffff; color: #1e1b4b; padding: 4px 12px; border-radius: 6px; text-decoration: none; font-size: 12px; font-weight: 800; margin-left: 8px;">Claim $9 Offer →</a>
+    </div>
+
+    <div class="ambient-glow"></div>
+
+    <header style="top: 38px;">
+        <a href="#" class="logo">
+            Ruban<span class="logo-dot"></span>
+        </a>
+        <nav>
+            <a href="#work">Featured Work</a>
+            <a href="#services">Services</a>
+            <a href="#pricing">Pricing</a>
+            <a href="#contact">Contact</a>
+        </nav>
+        <a href="#contact" class="header-cta">Get Free Redesign Mockup →</a>
+    </header>
+
+    <main class="container">
+        <!-- Hero -->
+        <section class="hero">
+            <div class="availability-pill">
+                <span class="pulse-dot"></span> Available for new client projects • 3–5 Day Delivery
+            </div>
+            <h1>Websites That Turn Visitors Into High-Paying Customers.</h1>
+            <p>
+                Hi, I'm <strong>Ruban</strong>. I design modern, clean, and minimalist UI for growing businesses. 
+                Zero clutter, generous whitespace, and engineered to drive phone calls and booked appointments.
+            </p>
+            <div class="hero-actions">
+                <a href="#contact" class="btn-main">Claim Your $9 Redesign Concept →</a>
+                <a href="#work" class="btn-secondary">Explore Recent Work</a>
+            </div>
+
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <h3>3-5 Days</h3>
+                    <p>Average Project Turnaround</p>
+                </div>
+                <div class="stat-item">
+                    <h3>100%</h3>
+                    <p>Mobile-Optimized & Responsive</p>
+                </div>
+                <div class="stat-item">
+                    <h3>Figma & Framer</h3>
+                    <p>Developer-Ready Assets</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Featured Work -->
+        <section id="work">
+            <div class="section-header">
+                <span class="section-tag">Case Studies & Concepts</span>
+                <h2>Recent High-Converting Designs</h2>
+                <p>Designed for real businesses to maximize local customer inquiries and conversions.</p>
+            </div>
+
+            <div class="portfolio-grid">
+                <!-- Project 1 -->
+                <div class="work-card">
+                    <div class="work-img-wrap" style="background: linear-gradient(135deg, #1e293b, #0f172a);">
+                        <span class="mockup-preview-badge">HOME SERVICES</span>
+                        <div class="mockup-icon">🏠</div>
+                    </div>
+                    <div class="work-content">
+                        <div>
+                            <h3>Austin Roofing & Restoration</h3>
+                            <p>High-contrast, trustworthy landing page redesign with instant damage estimate form and tap-to-call hero.</p>
+                            <div class="work-tags">
+                                <span class="work-tag">Figma</span>
+                                <span class="work-tag">Mobile First</span>
+                                <span class="work-tag">Lead Gen</span>
+                            </div>
+                        </div>
+                        <a href="http://localhost:8080/mockup/1" target="_blank" class="btn-view-work">View Live Interactive Mockup ↗</a>
+                    </div>
+                </div>
+
+                <!-- Project 2 -->
+                <div class="work-card">
+                    <div class="work-img-wrap" style="background: linear-gradient(135deg, #0c4a6e, #082f49);">
+                        <span class="mockup-preview-badge">HEALTH & WELLNESS</span>
+                        <div class="mockup-icon">🦷</div>
+                    </div>
+                    <div class="work-content">
+                        <div>
+                            <h3>Miami Cosmetic Dental Studio</h3>
+                            <p>Clean, serene dental care website featuring patient smiles gallery, doctor credentials, and 1-click consultation booking.</p>
+                            <div class="work-tags">
+                                <span class="work-tag">Minimalist UI</span>
+                                <span class="work-tag">Patient Booking</span>
+                                <span class="work-tag">Responsive</span>
+                            </div>
+                        </div>
+                        <a href="#contact" class="btn-view-work">Request Case Study Demo ↗</a>
+                    </div>
+                </div>
+
+                <!-- Project 3 -->
+                <div class="work-card">
+                    <div class="work-img-wrap" style="background: linear-gradient(135deg, #831843, #500724);">
+                        <span class="mockup-preview-badge">LUXURY AESTHETICS</span>
+                        <div class="mockup-icon">✨</div>
+                    </div>
+                    <div class="work-content">
+                        <div>
+                            <h3>Dallas Boutique Medical Spa</h3>
+                            <p>Luxury spa experience showcasing non-invasive treatments, glowing testimonials, and VIP consultation scheduler.</p>
+                            <div class="work-tags">
+                                <span class="work-tag">Luxury Palette</span>
+                                <span class="work-tag">Conversion Rate</span>
+                                <span class="work-tag">Framer</span>
+                            </div>
+                        </div>
+                        <a href="#contact" class="btn-view-work">Request Case Study Demo ↗</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Services -->
+        <section id="services">
+            <div class="section-header">
+                <span class="section-tag">Core Expertise</span>
+                <h2>How I Help Your Business Grow</h2>
+                <p>Everything you need to launch a website that looks stunning and brings in revenue.</p>
+            </div>
+
+            <div class="services-grid">
+                <div class="service-box">
+                    <div class="service-icon">🎨</div>
+                    <h3>Modern Website & UI Design</h3>
+                    <p>Clean, uncluttered layouts in Figma with generous whitespace and clear typography tailored to your exact brand identity.</p>
+                </div>
+                <div class="service-box">
+                    <div class="service-icon">📱</div>
+                    <h3>Mobile Responsive Perfection</h3>
+                    <p>Over 60% of web traffic is mobile. Every page is meticulously designed to load fast and look flawless on all screens.</p>
+                </div>
+                <div class="service-box">
+                    <div class="service-icon">⚡</div>
+                    <h3>Developer-Ready Handoff</h3>
+                    <p>Built with proper Figma Auto-Layout, organized component systems, and export-ready SVG/PNG assets so your dev team builds fast.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Pricing -->
+        <section id="pricing">
+            <div class="section-header">
+                <span class="section-tag">Transparent Investment</span>
+                <h2>Simple, Fixed-Price Packages</h2>
+                <p>No surprise hourly fees. Upfront pricing with fast 3 to 5 day turnarounds.</p>
+            </div>
+
+            <div class="pricing-grid">
+                <!-- Package 1 Launch Special -->
+                <div class="pricing-card" style="border: 2px solid #ef4444; background: linear-gradient(180deg, #1f121d 0%, #0f1420 100%);">
+                    <div style="background: #ef4444; color: #fff; padding: 4px 12px; border-radius: 20px; font-size: 11px; font-weight: 800; display: inline-block; margin-bottom: 12px; text-transform: uppercase;">🔥 Launch Special (97% OFF)</div>
+                    <h3>Homepage Redesign</h3>
+                    <p>Exclusive promotional offer for the first 10 businesses to upgrade their site.</p>
+                    <div class="price">$9 <span style="text-decoration: line-through; color: #ef4444; margin-left: 8px; font-size: 18px;">$299</span></div>
+                    <ul class="features-list">
+                        <li><span>✓</span> Full Modern Homepage Redesign</li>
+                        <li><span>✓</span> Desktop & Mobile Responsive in Figma</li>
+                        <li><span>✓</span> Clean Whitespace & High-Converting Flow</li>
+                        <li><span>✓</span> Fast 48-Hour Delivery</li>
+                        <li><span>✓</span> Export-Ready Developer Assets</li>
+                    </ul>
+                    <a href="#contact" class="btn-pricing" style="background: #ef4444; border-color: #ef4444;">Claim $9 Offer Now</a>
+                </div>
+
+                <!-- Package 2 Featured -->
+                <div class="pricing-card featured">
+                    <div class="popular-badge">BEST VALUE</div>
+                    <h3>3-Page Core Website</h3>
+                    <p>Full redesign for Home, About Us, and Contact / Booking pages.</p>
+                    <div class="price">$199 <span style="text-decoration: line-through; color: #94a3b8; margin-left: 8px; font-size: 18px;">$599</span></div>
+                    <ul class="features-list">
+                        <li><span>✓</span> 3 Core Pages (Home, About, Contact)</li>
+                        <li><span>✓</span> Desktop + Mobile Layouts in Figma</li>
+                        <li><span>✓</span> Clickable Interactive Prototype</li>
+                        <li><span>✓</span> Mini Brand Style Guide & Tokens</li>
+                        <li><span>✓</span> Export-Ready Developer Assets</li>
+                        <li><span>✓</span> 3–4 Days Delivery</li>
+                    </ul>
+                    <a href="#contact" class="btn-pricing btn-featured">Select Package</a>
+                </div>
+
+                <!-- Package 3 -->
+                <div class="pricing-card">
+                    <h3>Full Site Redesign</h3>
+                    <p>Complete multi-page revamp with live no-code deployment.</p>
+                    <div class="price">$399 <span style="text-decoration: line-through; color: #94a3b8; margin-left: 8px; font-size: 18px;">$1,199</span></div>
+                    <ul class="features-list">
+                        <li><span>✓</span> Up to 6 Custom Pages</li>
+                        <li><span>✓</span> Full Design System & Components</li>
+                        <li><span>✓</span> Live Framer / Webflow Deployment</li>
+                        <li><span>✓</span> SEO & Speed Optimization</li>
+                        <li><span>✓</span> Unlimited Revisions until 100% happy</li>
+                    </ul>
+                    <a href="#contact" class="btn-pricing">Select Package</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Form -->
+        <section id="contact">
+            <div class="contact-wrap">
+                <div class="contact-info">
+                    <span class="section-tag">Let's Connect</span>
+                    <h2>Ready to Upgrade Your Website?</h2>
+                    <p>
+                        Tell me a bit about your business or share your existing website URL. 
+                        I will review it and send you a **free visual concept & mockup** within 24 hours.
+                    </p>
+                    <div class="direct-email-box">
+                        <span style="font-size: 24px;">✉️</span>
+                        <div>
+                            <h4>Direct Inquiries</h4>
+                            <a href="mailto:rubanvelankanni8@gmail.com">rubanvelankanni8@gmail.com</a>
+                        </div>
+                    </div>
+                </div>
+
+                <form class="contact-form" action="https://formsubmit.co/rubanvelankanni8@gmail.com" method="POST">
+                    <!-- FormSubmit Configuration -->
+                    <input type="hidden" name="_subject" value="[RUBAN-LEAD $9-SPECIAL] New Client Inquiry!">
+                    <input type="hidden" name="_captcha" value="false">
+                    
+                    <div class="form-row-2">
+                        <input type="text" name="name" placeholder="Your Name" required>
+                        <input type="email" name="email" placeholder="Your Email Address" required>
+                    </div>
+                    <div class="form-row-2">
+                        <input type="text" name="business" placeholder="Business Name or Niche">
+                        <input type="url" name="website" placeholder="Current Website (if any)">
+                    </div>
+                    <select name="package" required>
+                        <option value="🔥 Launch Special ($9 Homepage Redesign)" selected>🔥 Launch Special: Complete Homepage Redesign ($9)</option>
+                        <option value="3-Page Website ($199)">3-Page Core Website ($199)</option>
+                        <option value="Full Redesign ($399)">Full Multi-Page Redesign ($399)</option>
+                        <option value="Custom Project">Custom Project / Audit Consultation</option>
+                    </select>
+                    <textarea name="message" placeholder="Briefly describe what you would like to build or improve..." required></textarea>
+                    <button type="submit" class="btn-send">Claim $9 Redesign Concept →</button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 <strong>Ruban</strong>. All rights reserved. • Contact: <a href="mailto:rubanvelankanni8@gmail.com">rubanvelankanni8@gmail.com</a></p>
+    </footer>
+
+</body>
+</html>
