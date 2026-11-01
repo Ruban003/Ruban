@@ -289,7 +289,7 @@
             height: 36px;
             width: auto;
             display: block;
-            filter: none;
+            filter: drop-shadow(0 4px 12px rgba(225, 29, 72, 0.35));
             transition: transform 0.35s var(--ease-out-expo);
         }
         .logo:hover .logo-icon {
@@ -307,7 +307,7 @@
         .logo-sub {
             font-size: 10px;
             font-weight: 700;
-            color: #94a3b8;
+            color: var(--ruby);
             letter-spacing: 0.14em;
             text-transform: uppercase;
             margin-top: 2px;
@@ -385,7 +385,72 @@
             z-index: 1;
         }
 
-        /* Global Action Buttons */
+        /* Hero Section */
+        .hero {
+            padding: 90px 0 70px;
+            text-align: center;
+        }
+        .availability-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(16, 185, 129, 0.1);
+            border: 1px solid rgba(16, 185, 129, 0.3);
+            color: #6ee7b7;
+            padding: 6px 16px;
+            border-radius: 30px;
+            font-size: 13px;
+            font-weight: 700;
+            margin-bottom: 24px;
+            animation: fadeInDown 0.8s var(--ease-out-expo) forwards;
+            transition: transform 0.25s ease, border-color 0.25s ease;
+        }
+        .availability-pill:hover {
+            transform: translateY(-2px);
+            border-color: rgba(16, 185, 129, 0.6);
+            box-shadow: 0 4px 14px var(--accent-glow);
+        }
+        .pulse-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--accent);
+            box-shadow: 0 0 10px var(--accent);
+            animation: pulse 1.8s infinite;
+        }
+        @keyframes pulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.45; transform: scale(1.3); }
+        }
+
+        .hero h1 {
+            font-size: 60px;
+            line-height: 1.12;
+            letter-spacing: -1.8px;
+            font-weight: 800;
+            max-width: 900px;
+            margin: 0 auto 24px;
+            background: linear-gradient(180deg, #ffffff 40%, #94a3b8 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: fadeInUp 0.9s var(--ease-out-expo) 0.1s backwards;
+        }
+        .hero p {
+            font-size: 19px;
+            color: var(--text-muted);
+            max-width: 680px;
+            margin: 0 auto 36px;
+            line-height: 1.6;
+            animation: fadeInUp 0.9s var(--ease-out-expo) 0.2s backwards;
+        }
+        .hero-actions {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 60px;
+            animation: fadeInUp 0.9s var(--ease-out-expo) 0.3s backwards;
+        }
         .btn-main {
             background: linear-gradient(135deg, #6366f1, #8b5cf6);
             color: #fff;
@@ -941,659 +1006,6 @@
             .form-row-2 { grid-template-columns: 1fr; }
             nav { display: none; }
         }
-    
-        /* =========================================================
-           Custom Browser Surfaces, Themed Caret, Selection & Scrollbar
-           ========================================================= */
-        ::selection {
-            background: rgba(99, 102, 241, 0.35);
-            color: #ffffff;
-        }
-        ::-webkit-scrollbar {
-            width: 8px;
-            height: 8px;
-        }
-        ::-webkit-scrollbar-track {
-            background: #07090e;
-        }
-        ::-webkit-scrollbar-thumb {
-            background: #1e293b;
-            border-radius: 4px;
-        }
-        ::-webkit-scrollbar-thumb:hover {
-            background: #6366f1;
-        }
-        :focus-visible {
-            outline: 2px solid #6366f1;
-            outline-offset: 3px;
-        }
-
-        /* Hero Redesign Styles */
-        .hero {
-            padding: 85px 0 60px;
-            text-align: center;
-            position: relative;
-        }
-        .hero-top-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            background: rgba(16, 185, 129, 0.08);
-            border: 1px solid rgba(16, 185, 129, 0.28);
-            color: #34d399;
-            padding: 6px 18px;
-            border-radius: 30px;
-            font-size: 13px;
-            font-weight: 700;
-            margin-bottom: 24px;
-            box-shadow: 0 2px 12px rgba(16, 185, 129, 0.1);
-            transition: all 0.25s ease;
-        }
-        .hero-top-badge:hover {
-            transform: translateY(-2px);
-            border-color: rgba(16, 185, 129, 0.5);
-            box-shadow: 0 4px 16px rgba(16, 185, 129, 0.2);
-        }
-        .hero h1 {
-            font-size: 62px;
-            line-height: 1.08;
-            letter-spacing: -2px;
-            font-weight: 800;
-            max-width: 960px;
-            margin: 0 auto 22px;
-            color: #ffffff !important;
-            -webkit-text-fill-color: #ffffff !important;
-            background: none !important;
-            font-family: 'Space Grotesk', sans-serif;
-            animation: fadeInUp 0.9s var(--ease-out-expo) 0.1s backwards;
-        }
-        .hero p.hero-subtitle {
-            font-size: 19px;
-            color: #94a3b8;
-            max-width: 740px;
-            margin: 0 auto 34px;
-            line-height: 1.6;
-            animation: fadeInUp 0.9s var(--ease-out-expo) 0.2s backwards;
-        }
-        .hero-actions {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 16px;
-            margin-bottom: 28px;
-            animation: fadeInUp 0.9s var(--ease-out-expo) 0.3s backwards;
-        }
-        .hero-trust-row {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 18px;
-            flex-wrap: wrap;
-            margin-bottom: 50px;
-            animation: fadeInUp 0.9s var(--ease-out-expo) 0.35s backwards;
-        }
-        .trust-pill {
-            display: inline-flex;
-            align-items: center;
-            gap: 7px;
-            font-size: 13px;
-            font-weight: 600;
-            color: #cbd5e1;
-            background: rgba(15, 20, 32, 0.6);
-            border: 1px solid rgba(31, 41, 61, 0.8);
-            padding: 6px 14px;
-            border-radius: 20px;
-        }
-        .trust-pill svg {
-            color: #10b981;
-            flex-shrink: 0;
-        }
-
-        /* =========================================================
-           Interactive Live UI Showcase & Device Console
-           ========================================================= */
-        .showcase-console {
-            max-width: 1040px;
-            margin: 0 auto;
-            background: #0b0f19;
-            border: 1px solid rgba(255, 255, 255, 0.12);
-            border-radius: 20px;
-            overflow: hidden;
-            box-shadow: 0 30px 80px -20px rgba(0, 0, 0, 0.85), 0 0 40px rgba(99, 102, 241, 0.12);
-            position: relative;
-            z-index: 2;
-            transition: transform 0.3s var(--ease-out-expo), box-shadow 0.3s var(--ease-out-expo), border-color 0.3s ease;
-            text-align: left;
-        }
-        .showcase-console:hover {
-            border-color: rgba(99, 102, 241, 0.4);
-            box-shadow: 0 35px 90px -20px rgba(0, 0, 0, 0.95), 0 0 50px rgba(99, 102, 241, 0.2);
-        }
-
-        /* Console Chrome Bar */
-        .console-chrome {
-            background: #0f1422;
-            border-bottom: 1px solid #1e293b;
-            padding: 12px 20px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 16px;
-            flex-wrap: wrap;
-        }
-        .console-controls {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            flex-shrink: 0;
-        }
-        .control-dot {
-            width: 11px;
-            height: 11px;
-            border-radius: 50%;
-            display: inline-block;
-        }
-        .dot-close { background: #ef4444; opacity: 0.85; }
-        .dot-min { background: #f59e0b; opacity: 0.85; }
-        .dot-expand { background: #10b981; opacity: 0.85; }
-
-        .console-address-bar {
-            flex: 1;
-            min-width: 260px;
-            max-width: 460px;
-            background: #07090e;
-            border: 1px solid #1e293b;
-            border-radius: 8px;
-            padding: 6px 14px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            font-size: 13px;
-            font-family: 'Space Grotesk', monospace, sans-serif;
-        }
-        .lock-icon {
-            color: #10b981;
-            flex-shrink: 0;
-        }
-        .url-protocol {
-            color: #64748b;
-        }
-        .url-domain {
-            color: #f1f5f9;
-            font-weight: 700;
-        }
-        .live-indicator-chip {
-            margin-left: auto;
-            display: inline-flex;
-            align-items: center;
-            gap: 5px;
-            background: rgba(16, 185, 129, 0.15);
-            border: 1px solid rgba(16, 185, 129, 0.4);
-            color: #6ee7b7;
-            font-size: 10px;
-            font-weight: 800;
-            padding: 2px 7px;
-            border-radius: 4px;
-            letter-spacing: 0.5px;
-        }
-        .live-indicator-chip .pulse-dot {
-            width: 6px;
-            height: 6px;
-        }
-
-        .console-actions {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            flex-shrink: 0;
-        }
-        .viewport-toggle-group {
-            display: flex;
-            background: #07090e;
-            border: 1px solid #1e293b;
-            border-radius: 8px;
-            padding: 3px;
-            gap: 2px;
-        }
-        .btn-viewport {
-            background: transparent;
-            border: none;
-            color: #94a3b8;
-            padding: 6px 12px;
-            border-radius: 6px;
-            font-size: 12px;
-            font-weight: 700;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            transition: all 0.2s ease;
-        }
-        .btn-viewport:hover {
-            color: #ffffff;
-        }
-        .btn-viewport.active {
-            background: #1e293b;
-            color: #ffffff;
-            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
-        }
-        .btn-open-live {
-            background: rgba(99, 102, 241, 0.15);
-            border: 1px solid rgba(99, 102, 241, 0.4);
-            color: #c7d2fe;
-            padding: 7px 14px;
-            border-radius: 8px;
-            font-size: 12px;
-            font-weight: 700;
-            text-decoration: none;
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            transition: all 0.2s ease;
-        }
-        .btn-open-live:hover {
-            background: #6366f1;
-            color: #ffffff;
-            box-shadow: 0 4px 14px rgba(99, 102, 241, 0.4);
-            transform: translateY(-1px);
-        }
-
-        /* Tabs Bar */
-        .showcase-tabs-bar {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            background: #0a0e17;
-            border-bottom: 1px solid #1e293b;
-        }
-        .showcase-tab {
-            background: transparent;
-            border: none;
-            border-right: 1px solid #1e293b;
-            padding: 14px 18px;
-            text-align: left;
-            cursor: pointer;
-            display: flex;
-            flex-direction: column;
-            gap: 4px;
-            color: #94a3b8;
-            transition: all 0.25s ease;
-            position: relative;
-        }
-        .showcase-tab:last-child {
-            border-right: none;
-        }
-        .showcase-tab strong {
-            font-size: 14px;
-            color: #cbd5e1;
-            font-family: 'Space Grotesk', sans-serif;
-            transition: color 0.2s ease;
-        }
-        .showcase-tab:hover {
-            background: rgba(255, 255, 255, 0.02);
-        }
-        .showcase-tab:hover strong {
-            color: #ffffff;
-        }
-        .showcase-tab.active {
-            background: #0f1422;
-            color: #ffffff;
-        }
-        .showcase-tab.active strong {
-            color: #ffffff;
-        }
-        .showcase-tab.active::after {
-            content: '';
-            position: absolute;
-            bottom: -1px;
-            left: 0;
-            width: 100%;
-            height: 2px;
-            background: linear-gradient(90deg, #6366f1, #e11d48);
-        }
-        .tab-badge-live {
-            align-self: flex-start;
-            background: rgba(16, 185, 129, 0.18);
-            color: #34d399;
-            border: 1px solid rgba(16, 185, 129, 0.35);
-            font-size: 10px;
-            font-weight: 800;
-            padding: 2px 7px;
-            border-radius: 4px;
-            letter-spacing: 0.5px;
-        }
-        .tab-badge-concept {
-            align-self: flex-start;
-            background: rgba(99, 102, 241, 0.18);
-            color: #a5b4fc;
-            border: 1px solid rgba(99, 102, 241, 0.35);
-            font-size: 10px;
-            font-weight: 800;
-            padding: 2px 7px;
-            border-radius: 4px;
-            letter-spacing: 0.5px;
-        }
-        .tab-category {
-            font-size: 11px;
-            color: #64748b;
-            font-weight: 600;
-        }
-        .showcase-tab.active .tab-category {
-            color: #94a3b8;
-        }
-
-        /* Viewport Frame Wrapper */
-        .showcase-viewport-wrapper {
-            background: #06080d;
-            padding: 24px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 440px;
-            transition: all 0.4s var(--ease-out-expo);
-            overflow: hidden;
-        }
-        .device-screen-container {
-            width: 100%;
-            border-radius: 12px;
-            background: #080b12;
-            border: 1px solid #1e293b;
-            overflow: hidden;
-            position: relative;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6);
-            transition: all 0.4s var(--ease-out-expo);
-        }
-
-        /* Mobile Mode Transformation */
-        .showcase-viewport-wrapper.mode-mobile .device-screen-container {
-            width: 375px;
-            max-width: 90%;
-            border-radius: 36px;
-            border: 8px solid #1e293b;
-            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.85);
-        }
-        .device-notch {
-            display: none;
-            position: absolute;
-            top: 10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 90px;
-            height: 18px;
-            background: #000000;
-            border-radius: 20px;
-            z-index: 10;
-        }
-        .showcase-viewport-wrapper.mode-mobile .device-notch {
-            display: block;
-        }
-
-        /* Screen Canvas & Previews */
-        .screen-canvas {
-            min-height: 380px;
-            position: relative;
-        }
-
-        /* She GLAM Preview */
-        .preview-sheglam {
-            background: radial-gradient(circle at top right, #1f1a14 0%, #0d0f14 70%);
-            padding: 34px 28px;
-            color: #f8fafc;
-        }
-        .preview-sheglam-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-bottom: 1px solid rgba(212, 175, 55, 0.2);
-            padding-bottom: 14px;
-            margin-bottom: 24px;
-        }
-        .sheglam-brand {
-            font-family: 'Space Grotesk', sans-serif;
-            font-size: 18px;
-            font-weight: 800;
-            letter-spacing: 0.15em;
-            color: #e5c07b;
-        }
-        .sheglam-google-badge {
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            font-size: 12px;
-            font-weight: 700;
-            color: #f8fafc;
-            background: rgba(212, 175, 55, 0.12);
-            border: 1px solid rgba(212, 175, 55, 0.3);
-            padding: 4px 10px;
-            border-radius: 20px;
-        }
-        .sheglam-stars {
-            color: #fbbf24;
-        }
-        .preview-sheglam-hero h2 {
-            font-size: 32px;
-            font-weight: 800;
-            line-height: 1.15;
-            letter-spacing: -0.8px;
-            color: #ffffff;
-            margin-bottom: 12px;
-            max-width: 620px;
-        }
-        .preview-sheglam-hero p {
-            font-size: 15px;
-            color: #cbd5e1;
-            max-width: 580px;
-            line-height: 1.5;
-            margin-bottom: 22px;
-        }
-        .sheglam-service-chips {
-            display: flex;
-            gap: 8px;
-            flex-wrap: wrap;
-            margin-bottom: 24px;
-        }
-        .sheglam-chip {
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(212, 175, 55, 0.25);
-            color: #e2e8f0;
-            font-size: 12px;
-            font-weight: 600;
-            padding: 5px 12px;
-            border-radius: 6px;
-        }
-        .sheglam-interactive-row {
-            display: flex;
-            align-items: center;
-            gap: 14px;
-            flex-wrap: wrap;
-        }
-        .btn-sheglam-cta {
-            background: linear-gradient(135deg, #d4af37, #f3e5ab);
-            color: #1a1a1a;
-            padding: 10px 22px;
-            border-radius: 8px;
-            font-weight: 800;
-            font-size: 13px;
-            text-decoration: none;
-            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
-            transition: transform 0.2s ease;
-        }
-        .btn-sheglam-cta:hover {
-            transform: translateY(-2px);
-        }
-        .sheglam-verified-pill {
-            font-size: 12px;
-            color: #10b981;
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            font-weight: 700;
-        }
-
-        /* Austin Roofing Preview */
-        .preview-roofing {
-            background: radial-gradient(circle at top right, #1a2233 0%, #0d121c 70%);
-            padding: 34px 28px;
-            color: #f8fafc;
-        }
-        .preview-roofing-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-            padding-bottom: 14px;
-            margin-bottom: 24px;
-        }
-        .roofing-brand {
-            font-family: 'Space Grotesk', sans-serif;
-            font-size: 17px;
-            font-weight: 800;
-            color: #60a5fa;
-            letter-spacing: 0.5px;
-        }
-        .roofing-tag {
-            background: rgba(239, 68, 68, 0.15);
-            border: 1px solid rgba(239, 68, 68, 0.3);
-            color: #f87171;
-            font-size: 11px;
-            font-weight: 800;
-            padding: 4px 10px;
-            border-radius: 4px;
-        }
-        .preview-roofing-hero h2 {
-            font-size: 32px;
-            font-weight: 800;
-            line-height: 1.15;
-            letter-spacing: -0.8px;
-            color: #ffffff;
-            margin-bottom: 12px;
-            max-width: 620px;
-        }
-        .preview-roofing-hero p {
-            font-size: 15px;
-            color: #94a3b8;
-            max-width: 580px;
-            margin-bottom: 22px;
-        }
-        .roofing-quote-box {
-            background: rgba(15, 23, 42, 0.7);
-            border: 1px solid #1e293b;
-            border-radius: 10px;
-            padding: 16px;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            flex-wrap: wrap;
-            max-width: 600px;
-        }
-        .roofing-quote-input {
-            background: #070a12;
-            border: 1px solid #334155;
-            color: #fff;
-            padding: 8px 12px;
-            border-radius: 6px;
-            font-size: 13px;
-            flex: 1;
-        }
-        .btn-roofing-cta {
-            background: #2563eb;
-            color: #fff;
-            padding: 8px 18px;
-            border-radius: 6px;
-            font-weight: 700;
-            font-size: 13px;
-            text-decoration: none;
-        }
-
-        /* Miami Dental Preview */
-        .preview-dental {
-            background: radial-gradient(circle at top right, #12242e 0%, #091218 70%);
-            padding: 34px 28px;
-            color: #f8fafc;
-        }
-        .preview-dental-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-            padding-bottom: 14px;
-            margin-bottom: 24px;
-        }
-        .dental-brand {
-            font-family: 'Space Grotesk', sans-serif;
-            font-size: 17px;
-            font-weight: 800;
-            color: #2dd4bf;
-            letter-spacing: 0.5px;
-        }
-        .dental-badge {
-            background: rgba(45, 212, 191, 0.15);
-            border: 1px solid rgba(45, 212, 191, 0.3);
-            color: #5eead4;
-            font-size: 11px;
-            font-weight: 800;
-            padding: 4px 10px;
-            border-radius: 20px;
-        }
-        .preview-dental-hero h2 {
-            font-size: 32px;
-            font-weight: 800;
-            line-height: 1.15;
-            letter-spacing: -0.8px;
-            color: #ffffff;
-            margin-bottom: 12px;
-            max-width: 620px;
-        }
-        .preview-dental-hero p {
-            font-size: 15px;
-            color: #94a3b8;
-            max-width: 580px;
-            margin-bottom: 22px;
-        }
-        .dental-actions {
-            display: flex;
-            gap: 12px;
-            align-items: center;
-            flex-wrap: wrap;
-        }
-        .btn-dental-cta {
-            background: #0d9488;
-            color: #fff;
-            padding: 10px 20px;
-            border-radius: 8px;
-            font-weight: 700;
-            font-size: 13px;
-            text-decoration: none;
-        }
-
-        /* Showcase Metrics Footer */
-        .showcase-metrics-footer {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            background: #0f1422;
-            border-top: 1px solid #1e293b;
-            padding: 18px 24px;
-            text-align: center;
-        }
-        .showcase-metric-box {
-            padding: 0 12px;
-            border-right: 1px solid #1e293b;
-        }
-        .showcase-metric-box:last-child {
-            border-right: none;
-        }
-        .showcase-metric-val {
-            font-size: 26px;
-            font-weight: 800;
-            font-family: 'Space Grotesk', sans-serif;
-            color: #ffffff;
-            margin-bottom: 2px;
-        }
-        .showcase-metric-lbl {
-            font-size: 12px;
-            color: #94a3b8;
-            font-weight: 600;
-        }
-    
     </style>
 </head>
 <body>
@@ -1605,10 +1017,10 @@
 
     <!-- Launch Offer Top Banner -->
     <div class="launch-banner">
-        <span class="banner-tag">PROMOTIONAL OFFER</span>
-        <span><strong>LIMITED LAUNCH SPECIAL:</strong> Full Modern Homepage Redesign for just <strong>$9</strong> (Normally $299)</span>
+        <span class="banner-tag">SPECIAL LAUNCH OFFER</span>
+        <span><strong>BENGALURU LAUNCH SPECIAL:</strong> Full Modern Homepage Redesign for just <strong>₹2,999</strong> (Normally ₹15,000)</span>
         <span style="background: rgba(255,255,255,0.2); padding: 2px 8px; border-radius: 4px; font-size: 11px;">First 10 Clients Only</span>
-        <a href="#contact" class="banner-link">Claim $9 Offer &rarr;</a>
+        <a href="#contact" class="banner-link">Claim ₹2,999 Offer &rarr;</a>
     </div>
 
     <div class="ambient-glow"></div>
@@ -1617,7 +1029,7 @@
         <a href="#" class="logo">
             <img src="assets/rv-logo.svg" alt="RV Monogram" class="logo-icon">
             <div class="logo-text-wrap">
-                <span class="logo-title">Ruban Velankanni<span style="color: #2563eb;">.</span></span>
+                <span class="logo-title">Ruban Velankanni<span style="color: #e11d48;">.</span></span>
                 <span class="logo-sub">UI/UX &bull; Digital Architecture</span>
             </div>
         </a>
@@ -1633,140 +1045,31 @@
     <main class="container">
         <!-- Hero -->
         <section class="hero">
-            <div class="hero-top-badge">
-                <span class="pulse-dot"></span>
-                <span>Available for Select Client Projects &bull; 3&ndash;5 Day Turnaround</span>
+            <div class="availability-pill">
+                <span class="pulse-dot"></span> Available for new client projects &bull; 3&ndash;5 Day Delivery
             </div>
-            <h1>High-Converting Websites Engineered for Revenue.</h1>
-            <p class="hero-subtitle">
-                I design modern, bespoke websites for growing service businesses, healthcare practices, and founder-led brands. 
-                Zero clutter, generous whitespace, instant mobile load times, and conversion architecture engineered to maximize booked client inquiries.
+            <h1>Websites That Turn Visitors Into High-Paying Customers.</h1>
+            <p>
+                Hi, I'm <strong>Ruban</strong>. I design modern, clean, and minimalist UI for growing businesses. 
+                Zero clutter, generous whitespace, and engineered to drive phone calls and booked appointments.
             </p>
             <div class="hero-actions">
-                <a href="#contact" class="btn-main">Claim Your $9 Redesign Concept &rarr;</a>
-                <a href="#heroShowcase" class="btn-secondary">Explore Live Showcase &darr;</a>
+                <a href="#contact" class="btn-main">Claim Your ₹2,999 Redesign Concept &rarr;</a>
+                <a href="#work" class="btn-secondary">Explore Recent Work</a>
             </div>
 
-            <div class="hero-trust-row">
-                <div class="trust-pill">
-                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-                    <span>3&ndash;5 Days Rapid Delivery</span>
+            <div class="stats-grid spotlight-card">
+                <div class="stat-item">
+                    <h3 data-count-target="3">3&ndash;5 Days</h3>
+                    <p>Average Project Turnaround</p>
                 </div>
-                <div class="trust-pill">
-                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-                    <span>100% Mobile &amp; SEO Engineered</span>
+                <div class="stat-item">
+                    <h3 data-count-target="100">100%</h3>
+                    <p>Mobile-Optimized &amp; Responsive</p>
                 </div>
-                <div class="trust-pill">
-                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-                    <span>Developer-Ready Assets (Figma/Code)</span>
-                </div>
-            </div>
-
-            <!-- Interactive Live UI Showcase & Device Console -->
-            <div class="showcase-console spotlight-card" id="heroShowcase">
-                <!-- Chrome Header -->
-                <div class="console-chrome">
-                    <div class="console-controls">
-                        <span class="control-dot dot-close"></span>
-                        <span class="control-dot dot-min"></span>
-                        <span class="control-dot dot-expand"></span>
-                    </div>
-
-                    <div class="console-address-bar">
-                        <svg class="lock-icon" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
-                        <span class="url-protocol">https://</span><span class="url-domain" id="showcaseDomain">sheglam.rvsmps.store</span>
-                        <span class="live-indicator-chip" id="showcaseStatusChip">
-                            <span class="pulse-dot"></span> LIVE IN PRODUCTION
-                        </span>
-                    </div>
-
-                    <div class="console-actions">
-                        <div class="viewport-toggle-group">
-                            <button type="button" class="btn-viewport active" id="btnDesktopView" title="Desktop 16:9 View">
-                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
-                                <span>Desktop</span>
-                            </button>
-                            <button type="button" class="btn-viewport" id="btnMobileView" title="Mobile Phone View">
-                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
-                                <span>Mobile</span>
-                            </button>
-                        </div>
-                        <a href="https://sheglam.rvsmps.store" target="_blank" rel="noopener noreferrer" class="btn-open-live" id="btnOpenLiveLink">
-                            <span>Launch Live</span>
-                            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-                        </a>
-                    </div>
-                </div>
-
-                <!-- Showcase Project Switcher Tabs -->
-                <div class="showcase-tabs-bar">
-                    <button type="button" class="showcase-tab active" data-project="sheglam">
-                        <span class="tab-badge-live">LIVE PROOF</span>
-                        <strong>She GLAM Salon &amp; Bridal</strong>
-                        <span class="tab-category">Luxury Beauty &bull; 5.0 &#9733; Google Verified</span>
-                    </button>
-                    <button type="button" class="showcase-tab" data-project="roofing">
-                        <span class="tab-badge-concept">LEAD GEN</span>
-                        <strong>Austin Prime Roofing</strong>
-                        <span class="tab-category">Home Services &bull; Instant Quote Engine</span>
-                    </button>
-                    <button type="button" class="showcase-tab" data-project="dental">
-                        <span class="tab-badge-concept">BOOKING FLOW</span>
-                        <strong>Miami Cosmetic Dental</strong>
-                        <span class="tab-category">Medical &bull; Patient Smile Consults</span>
-                    </button>
-                </div>
-
-                <!-- Viewport Frame Wrapper -->
-                <div class="showcase-viewport-wrapper" id="showcaseViewportWrapper">
-                    <div class="device-screen-container" id="deviceScreenContainer">
-                        <div class="device-notch"></div>
-                        <div class="screen-canvas" id="screenCanvas">
-                            <!-- She GLAM Preview default -->
-                            <div class="preview-sheglam">
-                                <div class="preview-sheglam-header">
-                                    <div class="sheglam-brand">SHE GLAM</div>
-                                    <div class="sheglam-google-badge">
-                                        <span class="sheglam-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
-                                        <span>5.0 Google Verified</span>
-                                    </div>
-                                </div>
-                                <div class="preview-sheglam-hero">
-                                    <h2>Unveil Your Signature Elegance.</h2>
-                                    <p>Karur's premier luxury salon &amp; bridal atelier. Bespoke hair smoothening, HD bridal artistry, and transformative aesthetic therapies.</p>
-                                    <div class="sheglam-service-chips">
-                                        <span class="sheglam-chip">Keratin &amp; Botox Hair</span>
-                                        <span class="sheglam-chip">Bridal HD Makeup</span>
-                                        <span class="sheglam-chip">HydraFacial Glow</span>
-                                        <span class="sheglam-chip">VIP Appointments</span>
-                                    </div>
-                                    <div class="sheglam-interactive-row">
-                                        <a href="https://sheglam.rvsmps.store" target="_blank" rel="noopener noreferrer" class="btn-sheglam-cta">Visit Live Production Site &rarr;</a>
-                                        <span class="sheglam-verified-pill">
-                                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-                                            Active on sheglam.rvsmps.store
-                                        </span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Showcase Metrics Footer -->
-                <div class="showcase-metrics-footer" id="showcaseMetricsFooter">
-                    <div class="showcase-metric-box">
-                        <div class="showcase-metric-val" id="metric1Val">+140%</div>
-                        <div class="showcase-metric-lbl" id="metric1Lbl">Direct Appointment Calls</div>
-                    </div>
-                    <div class="showcase-metric-box">
-                        <div class="showcase-metric-val" id="metric2Val">100/100</div>
-                        <div class="showcase-metric-lbl" id="metric2Lbl">Mobile Speed Performance</div>
-                    </div>
-                    <div class="showcase-metric-box">
-                        <div class="showcase-metric-val" id="metric3Val">5.0 &#9733;</div>
-                        <div class="showcase-metric-lbl" id="metric3Lbl">Verified Google Reviews</div>
-                    </div>
+                <div class="stat-item">
+                    <h3>Figma &amp; Framer</h3>
+                    <p>Developer-Ready Assets</p>
                 </div>
             </div>
         </section>
@@ -1780,27 +1083,24 @@
             </div>
 
             <div class="portfolio-grid">
-                <!-- Project 1: She GLAM Salon (Live Client Proof) -->
-                <div class="work-card spotlight-card reveal-item stagger-1" style="border-color: rgba(212, 175, 55, 0.4); box-shadow: 0 10px 30px rgba(212, 175, 55, 0.1);">
+                <!-- Project 1 -->
+                <div class="work-card spotlight-card reveal-item stagger-1">
                     <div class="work-img-wrap">
-                        <span class="mockup-preview-badge" style="background: rgba(16, 185, 129, 0.9); color: #fff;">LIVE IN PRODUCTION &bull; 5.0 &#9733;</span>
-                        <img src="https://images.unsplash.com/photo-1560066984-138dadb4c035?auto=format&fit=crop&w=800&q=80" alt="She GLAM Luxury Salon & Bridal Atelier" class="work-img" loading="lazy">
+                        <span class="mockup-preview-badge">HOME SERVICES</span>
+                        <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80" alt="Austin Roofing & Restoration Modern Architecture" class="work-img" loading="lazy">
                         <div class="work-img-overlay"></div>
                     </div>
                     <div class="work-content">
                         <div>
-                            <h3>She GLAM Salon &amp; Bridal Atelier</h3>
-                            <p>Complete custom design &amp; production deployment for Karur's premier luxury beauty atelier. Features 5.0 &#9733; Google verified proof, VIP consultation scheduler, and interactive service menu.</p>
+                            <h3>Austin Roofing &amp; Restoration</h3>
+                            <p>High-contrast, trustworthy landing page redesign with instant damage estimate form and tap-to-call hero.</p>
                             <div class="work-tags">
-                                <span class="work-tag" style="border-color: rgba(16, 185, 129, 0.5); color: #6ee7b7;">Live Production</span>
-                                <span class="work-tag">5.0 &#9733; Google</span>
-                                <span class="work-tag">Vercel Deploy</span>
-                                <span class="work-tag">SEO Architecture</span>
+                                <span class="work-tag">Figma</span>
+                                <span class="work-tag">Mobile First</span>
+                                <span class="work-tag">Lead Gen</span>
                             </div>
                         </div>
-                        <a href="https://sheglam.rvsmps.store" target="_blank" rel="noopener noreferrer" class="btn-view-work" style="background: rgba(16, 185, 129, 0.15); border-color: rgba(16, 185, 129, 0.4); color: #6ee7b7;">
-                            Visit Live Production Site (sheglam.rvsmps.store) &rarr;
-                        </a>
+                        <a href="#contact" class="btn-view-work">Request Case Study Demo &rarr;</a>
                     </div>
                 </div>
 
@@ -1892,18 +1192,18 @@
             <div class="pricing-grid">
                 <!-- Package 1 Launch Special -->
                 <div class="pricing-card spotlight-card reveal-item stagger-1" style="border: 2px solid #ef4444; background: linear-gradient(180deg, #1f121d 0%, #0f1420 100%);">
-                    <div style="background: #ef4444; color: #fff; padding: 4px 12px; border-radius: 20px; font-size: 11px; font-weight: 800; display: inline-block; margin-bottom: 12px; text-transform: uppercase; letter-spacing: 0.5px;">LAUNCH SPECIAL (97% OFF)</div>
+                    <div style="background: #ef4444; color: #fff; padding: 4px 12px; border-radius: 20px; font-size: 11px; font-weight: 800; display: inline-block; margin-bottom: 12px; text-transform: uppercase; letter-spacing: 0.5px;">LAUNCH SPECIAL (80% OFF)</div>
                     <h3>Homepage Redesign</h3>
-                    <p>Exclusive promotional offer for the first 10 businesses to upgrade their site.</p>
-                    <div class="price">$9 <span style="text-decoration: line-through; color: #ef4444; margin-left: 8px; font-size: 18px;">$299</span></div>
+                    <p>Exclusive promotional offer for local businesses to upgrade their mobile conversion rate.</p>
+                    <div class="price">₹2,999 <span style="text-decoration: line-through; color: #ef4444; margin-left: 8px; font-size: 18px;">₹15,000</span></div>
                     <ul class="features-list">
                         <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Full Modern Homepage Redesign</li>
-                        <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Desktop &amp; Mobile Responsive in Figma</li>
-                        <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Clean Whitespace &amp; High-Converting Flow</li>
-                        <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Fast 48-Hour Delivery</li>
+                        <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Desktop &amp; Mobile Responsive Layout</li>
+                        <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Direct WhatsApp Click-to-Chat Flow</li>
+                        <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Fast 3-Day Turnaround</li>
                         <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Export-Ready Developer Assets</li>
                     </ul>
-                    <a href="#contact" class="btn-pricing" style="background: #ef4444; border-color: #ef4444;">Claim $9 Offer Now</a>
+                    <a href="#contact" class="btn-pricing" style="background: #ef4444; border-color: #ef4444;">Claim ₹2,999 Offer Now</a>
                 </div>
 
                 <!-- Package 2 Featured -->
@@ -1911,13 +1211,12 @@
                     <div class="popular-badge">BEST VALUE</div>
                     <h3>3-Page Core Website</h3>
                     <p>Full redesign for Home, About Us, and Contact / Booking pages.</p>
-                    <div class="price">$199 <span style="text-decoration: line-through; color: #94a3b8; margin-left: 8px; font-size: 18px;">$599</span></div>
+                    <div class="price">₹7,999 <span style="text-decoration: line-through; color: #94a3b8; margin-left: 8px; font-size: 18px;">₹25,000</span></div>
                     <ul class="features-list">
                         <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> 3 Core Pages (Home, About, Contact)</li>
                         <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Desktop + Mobile Layouts in Figma</li>
                         <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Clickable Interactive Prototype</li>
                         <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Mini Brand Style Guide &amp; Tokens</li>
-                        <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Export-Ready Developer Assets</li>
                         <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> 3&ndash;4 Days Delivery</li>
                     </ul>
                     <a href="#contact" class="btn-pricing btn-featured">Select Package</a>
@@ -1927,11 +1226,11 @@
                 <div class="pricing-card spotlight-card reveal-item stagger-3">
                     <h3>Full Site Redesign</h3>
                     <p>Complete multi-page revamp with live no-code deployment.</p>
-                    <div class="price">$399 <span style="text-decoration: line-through; color: #94a3b8; margin-left: 8px; font-size: 18px;">$1,199</span></div>
+                    <div class="price">₹14,999 <span style="text-decoration: line-through; color: #94a3b8; margin-left: 8px; font-size: 18px;">₹45,000</span></div>
                     <ul class="features-list">
                         <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Up to 6 Custom Pages</li>
                         <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Full Design System &amp; Components</li>
-                        <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Live Framer / Webflow Deployment</li>
+                        <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Live Framer / Webflow / Cloud Deployment</li>
                         <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> SEO &amp; Speed Optimization</li>
                         <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Unlimited Revisions until 100% happy</li>
                     </ul>
@@ -1961,25 +1260,25 @@
 
                 <form class="contact-form" action="https://formsubmit.co/rubanvelankanni8@gmail.com" method="POST">
                     <!-- FormSubmit Configuration -->
-                    <input type="hidden" name="_subject" value="[RUBAN-LEAD $9-SPECIAL] New Client Inquiry!">
+                    <input type="hidden" name="_subject" value="[RUBAN-LEAD ₹2,999-SPECIAL] New Client Inquiry!">
                     <input type="hidden" name="_captcha" value="false">
                     
                     <div class="form-row-2">
-                        <input type="text" id="contactName" name="name" autocomplete="name" placeholder="Your Name" required>
-                        <input type="email" id="contactEmail" name="email" autocomplete="email" placeholder="Your Email Address" required>
+                        <input type="text" name="name" placeholder="Your Name" required>
+                        <input type="email" name="email" placeholder="Your Email Address" required>
                     </div>
                     <div class="form-row-2">
-                        <input type="text" id="contactBusiness" name="business" autocomplete="organization" placeholder="Business Name or Niche">
-                        <input type="url" id="contactWebsite" name="website" autocomplete="url" placeholder="Current Website (if any)">
+                        <input type="text" name="business" placeholder="Business Name or Niche">
+                        <input type="url" name="website" placeholder="Current Website (if any)">
                     </div>
                     <select name="package" required>
-                        <option value="Launch Special ($9 Homepage Redesign)" selected>Launch Special: Complete Homepage Redesign ($9)</option>
-                        <option value="3-Page Website ($199)">3-Page Core Website ($199)</option>
-                        <option value="Full Redesign ($399)">Full Multi-Page Redesign ($399)</option>
+                        <option value="Launch Special (₹2,999 Homepage Redesign)" selected>Launch Special: Complete Homepage Redesign (₹2,999)</option>
+                        <option value="3-Page Website (₹7,999)">3-Page Core Website (₹7,999)</option>
+                        <option value="Full Redesign (₹14,999)">Full Multi-Page Redesign (₹14,999)</option>
                         <option value="Custom Project">Custom Project / Audit Consultation</option>
                     </select>
                     <textarea name="message" placeholder="Briefly describe what you would like to build or improve..." required></textarea>
-                    <button type="submit" class="btn-send">Claim $9 Redesign Concept &rarr;</button>
+                    <button type="submit" class="btn-send">Claim ₹2,999 Redesign Concept &rarr;</button>
                 </form>
             </div>
         </section>
@@ -1987,7 +1286,7 @@
 
     <footer>
         <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 12px; margin-bottom: 16px;">
-            <img src="assets/rv-logo.svg" alt="RV Studio Monogram" style="height: 38px; width: auto; filter: none; transition: transform 0.3s ease;" class="footer-monogram" />
+            <img src="assets/rv-logo.svg" alt="RV Studio Monogram" style="height: 38px; width: auto; filter: drop-shadow(0 4px 10px rgba(225,29,72,0.3)); transition: transform 0.3s ease;" class="footer-monogram" />
             <span style="font-family: 'Space Grotesk', sans-serif; font-size: 16px; font-weight: 700; letter-spacing: -0.01em; color: #f8fafc;">RUBAN VELANKANNI</span>
         </div>
         <p>&copy; 2026 <strong>Ruban Velankanni</strong>. All rights reserved. &bull; Inquiries: <a href="mailto:rubanvelankanni8@gmail.com">rubanvelankanni8@gmail.com</a></p>
@@ -2173,159 +1472,6 @@
             });
 
             // ==========================================
-            
-            // ==========================================
-            // 7. Interactive Showcase Controller & Switcher
-            // ==========================================
-            const showcaseData = {
-                sheglam: {
-                    domain: 'sheglam.rvsmps.store',
-                    url: 'https://sheglam.rvsmps.store',
-                    status: 'LIVE IN PRODUCTION',
-                    statusClass: 'live',
-                    metric1: { val: '+140%', lbl: 'Direct Appointment Calls' },
-                    metric2: { val: '100/100', lbl: 'Mobile Speed Performance' },
-                    metric3: { val: '5.0 &#9733;', lbl: 'Verified Google Reviews' },
-                    html: `
-                        <div class="preview-sheglam">
-                            <div class="preview-sheglam-header">
-                                <div class="sheglam-brand">SHE GLAM</div>
-                                <div class="sheglam-google-badge">
-                                    <span class="sheglam-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
-                                    <span>5.0 Google Verified</span>
-                                </div>
-                            </div>
-                            <div class="preview-sheglam-hero">
-                                <h2>Unveil Your Signature Elegance.</h2>
-                                <p>Karur's premier luxury salon &amp; bridal atelier. Bespoke hair smoothening, HD bridal artistry, and transformative aesthetic therapies.</p>
-                                <div class="sheglam-service-chips">
-                                    <span class="sheglam-chip">Keratin &amp; Botox Hair</span>
-                                    <span class="sheglam-chip">Bridal HD Makeup</span>
-                                    <span class="sheglam-chip">HydraFacial Glow</span>
-                                    <span class="sheglam-chip">VIP Appointments</span>
-                                </div>
-                                <div class="sheglam-interactive-row">
-                                    <a href="https://sheglam.rvsmps.store" target="_blank" rel="noopener noreferrer" class="btn-sheglam-cta">Visit Live Production Site &rarr;</a>
-                                    <span class="sheglam-verified-pill">
-                                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-                                        Active on sheglam.rvsmps.store
-                                    </span>
-                                </div>
-                            </div>
-                        </div>
-                    `
-                },
-                roofing: {
-                    domain: 'austinroofingpro.com/estimate',
-                    url: '#contact',
-                    status: 'CONVERSION PROTOTYPE',
-                    statusClass: 'concept',
-                    metric1: { val: '3.8x', lbl: 'Quote Leads vs. Outdated Site' },
-                    metric2: { val: '< 1.2s', lbl: 'Page Load on 4G LTE' },
-                    metric3: { val: 'Figma', lbl: 'Full Design System Handoff' },
-                    html: `
-                        <div class="preview-roofing">
-                            <div class="preview-roofing-header">
-                                <div class="roofing-brand">AUSTIN ROOFING &amp; RESTORATION</div>
-                                <div class="roofing-tag">24/7 STORM DISPATCH</div>
-                            </div>
-                            <div class="preview-roofing-hero">
-                                <h2>Austin's Most Trusted Roof Repair &amp; Hail Damage Specialists.</h2>
-                                <p>Over 1,200 roofs replaced. Fully licensed, insured, and approved by all major home insurance carriers with $0 upfront costs.</p>
-                                <div class="roofing-quote-box">
-                                    <input type="text" id="demoAustinZip" name="demoAustinZip" aria-label="Austin Zip Code Demo" class="roofing-quote-input" placeholder="Enter Austin Zip Code (e.g. 78701)" readonly value="Austin, TX &bull; 78701">
-                                    <a href="#contact" class="btn-roofing-cta">Get 2-Hour Estimate &rarr;</a>
-                                </div>
-                            </div>
-                        </div>
-                    `
-                },
-                dental: {
-                    domain: 'miamicosmeticdental.com/book',
-                    url: '#contact',
-                    status: 'BOOKING FUNNEL',
-                    statusClass: 'concept',
-                    metric1: { val: '+85%', lbl: 'Online Consultation Bookings' },
-                    metric2: { val: 'Zero Friction', lbl: '1-Click Patient Intake' },
-                    metric3: { val: 'HIPAA Ready', lbl: 'Confidential Form Flow' },
-                    html: `
-                        <div class="preview-dental">
-                            <div class="preview-dental-header">
-                                <div class="dental-brand">MIAMI COSMETIC DENTAL</div>
-                                <div class="dental-badge">Board-Certified Specialists</div>
-                            </div>
-                            <div class="preview-dental-hero">
-                                <h2>Architecting Confident, Radiant Smiles in Miami Beach.</h2>
-                                <p>Custom porcelain veneers, 1-hour laser whitening, and painless orthodontic aligners crafted with 3D digital imaging.</p>
-                                <div class="dental-actions">
-                                    <a href="#contact" class="btn-dental-cta">Schedule Consultation ($49 Special) &rarr;</a>
-                                    <span style="font-size: 12px; color: #5eead4; font-weight: 700;">Includes 3D Smile Scan</span>
-                                </div>
-                            </div>
-                        </div>
-                    `
-                }
-            };
-
-            const showcaseDomain = document.getElementById('showcaseDomain');
-            const showcaseStatusChip = document.getElementById('showcaseStatusChip');
-            const btnOpenLiveLink = document.getElementById('btnOpenLiveLink');
-            const screenCanvas = document.getElementById('screenCanvas');
-            const metric1Val = document.getElementById('metric1Val');
-            const metric1Lbl = document.getElementById('metric1Lbl');
-            const metric2Val = document.getElementById('metric2Val');
-            const metric2Lbl = document.getElementById('metric2Lbl');
-            const metric3Val = document.getElementById('metric3Val');
-            const metric3Lbl = document.getElementById('metric3Lbl');
-            const showcaseTabs = document.querySelectorAll('.showcase-tab');
-            const btnDesktopView = document.getElementById('btnDesktopView');
-            const btnMobileView = document.getElementById('btnMobileView');
-            const showcaseViewportWrapper = document.getElementById('showcaseViewportWrapper');
-
-            showcaseTabs.forEach(tab => {
-                tab.addEventListener('click', () => {
-                    showcaseTabs.forEach(t => t.classList.remove('active'));
-                    tab.classList.add('active');
-
-                    const projKey = tab.getAttribute('data-project');
-                    const data = showcaseData[projKey];
-                    if (!data) return;
-
-                    showcaseDomain.textContent = data.domain;
-                    btnOpenLiveLink.setAttribute('href', data.url);
-                    if (data.url.startsWith('#')) {
-                        btnOpenLiveLink.removeAttribute('target');
-                    } else {
-                        btnOpenLiveLink.setAttribute('target', '_blank');
-                    }
-
-                    showcaseStatusChip.innerHTML = `<span class="pulse-dot"></span> ${data.status}`;
-                    metric1Val.innerHTML = data.metric1.val;
-                    metric1Lbl.textContent = data.metric1.lbl;
-                    metric2Val.innerHTML = data.metric2.val;
-                    metric2Lbl.textContent = data.metric2.lbl;
-                    metric3Val.innerHTML = data.metric3.val;
-                    metric3Lbl.textContent = data.metric3.lbl;
-
-                    screenCanvas.innerHTML = data.html;
-                });
-            });
-
-            // Viewport Switcher (Desktop vs Mobile)
-            if (btnDesktopView && btnMobileView && showcaseViewportWrapper) {
-                btnDesktopView.addEventListener('click', () => {
-                    btnDesktopView.classList.add('active');
-                    btnMobileView.classList.remove('active');
-                    showcaseViewportWrapper.classList.remove('mode-mobile');
-                });
-
-                btnMobileView.addEventListener('click', () => {
-                    btnMobileView.classList.add('active');
-                    btnDesktopView.classList.remove('active');
-                    showcaseViewportWrapper.classList.add('mode-mobile');
-                });
-            }
-    
             // 6. Smooth Anchor Navigation with Offset
             // ==========================================
             document.querySelectorAll('a[href^="#"]').forEach(anchor => {
