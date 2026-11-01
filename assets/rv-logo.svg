@@ -1,0 +1,83 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 340 180" width="340.0" height="180.0" fill="none">
+  <defs>
+    <!-- Vibrant Royal Blue Gradient for V Arm -->
+    <linearGradient id="royal-blue-v" x1="90%" y1="0%" x2="10%" y2="100%">
+      <stop offset="0%" stop-color="#2563eb" />
+      <stop offset="35%" stop-color="#3b82f6" />
+      <stop offset="75%" stop-color="#60a5fa" />
+      <stop offset="100%" stop-color="#1d4ed8" />
+    </linearGradient>
+
+    <!-- Crimson to Scarlet Gradient for Upper R Loop -->
+    <linearGradient id="crimson-red-r" x1="0%" y1="0%" x2="100%" y2="80%">
+      <stop offset="0%" stop-color="#b91c1c" />
+      <stop offset="35%" stop-color="#dc2626" />
+      <stop offset="75%" stop-color="#ef4444" />
+      <stop offset="100%" stop-color="#f87171" />
+    </linearGradient>
+
+    <!-- Radiant Red for Front R Leg Ribbon -->
+    <linearGradient id="radiant-red-leg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#991b1b" />
+      <stop offset="25%" stop-color="#dc2626" />
+      <stop offset="70%" stop-color="#ef4444" />
+      <stop offset="100%" stop-color="#f87171" />
+    </linearGradient>
+
+    <!-- Clean Crisp Crease Shadow (Neutral Black, Zero Colored Halo) -->
+    <linearGradient id="clean-crease" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="rgba(0, 0, 0, 0.7)" />
+      <stop offset="100%" stop-color="rgba(0, 0, 0, 0)" />
+    </linearGradient>
+  </defs>
+
+  <g>
+    <!-- 1. Right V Arm (Vibrant Royal Blue) -->
+    <path d="M 279 1 
+             L 332 1 
+             L 198 172 
+             L 145 172 
+             Z" 
+          fill="url(#royal-blue-v)" />
+
+    <!-- 2. Clean crease shadow under overlap -->
+    <path d="M 170 140 
+             L 204 140 
+             L 198 172 
+             L 145 172 
+             Z" 
+          fill="url(#clean-crease)" 
+          opacity="0.65" />
+
+    <!-- 3. R Upper Loop (Crimson Red) -->
+    <path d="M 1 1 
+             L 121 1 
+             C 165 1, 195 20, 195 48 
+             C 195 68, 192 78, 185 88 
+             L 138 88 
+             C 144 78, 144 68, 144 54 
+             C 144 45, 140 45, 130 45 
+             L 38 45 
+             Z" 
+          fill="url(#crimson-red-r)" />
+
+    <!-- 4. R Middle Origami Transition Fold -->
+    <path d="M 38 45 
+             L 138 88 
+             L 71 85 
+             Z" 
+          fill="#7f1d1d" />
+
+    <!-- 5. Front Radiant Ribbon (R Leg) -->
+    <path d="M 71 85 
+             L 124 85 
+             L 198 172 
+             L 145 172 
+             Z" 
+          fill="url(#radiant-red-leg)" />
+
+    <!-- 6. Origami Fold Crease Line Accents -->
+    <line x1="124" y1="85" x2="71" y2="85" stroke="#fca5a5" stroke-width="1.2" opacity="0.4" />
+    <line x1="145" y1="172" x2="198" y2="172" stroke="#bfdbfe" stroke-width="1.2" opacity="0.4" />
+  </g>
+</svg>
